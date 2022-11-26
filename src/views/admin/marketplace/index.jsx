@@ -65,6 +65,7 @@ import Avatar3 from "assets/img/avatars/avatar3.png";
 import Avatar4 from "assets/img/avatars/avatar4.png";
 import tableDataTopCreators from "views/admin/marketplace/variables/tableDataTopCreators.json";
 import { tableColumnsTopCreators } from "views/admin/marketplace/variables/tableColumnsTopCreators";
+import ColumnsTable from "./components/ColumnsTable";
 
 export default function Marketplace() {
   // Chakra Color Mode
@@ -72,6 +73,55 @@ export default function Marketplace() {
   const [currentNft, setCurrentNft] = useState({});
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const textColorBrand = useColorModeValue("brand.500", "white");
+  const columnsDataColumns = [
+    {
+      Header: "Activity type",
+      accessor: "activity type",
+    },
+    {
+      Header: "Price",
+      accessor: "Price",
+    },
+    {
+      Header: "from",
+      accessor: "from",
+    },
+    {
+      Header: "to",
+      accessor: "to",
+    },
+    {
+      Header: 'date',
+      accessor: "date"
+    }
+  ];
+  const tableDataColumns = [
+    {
+      "name":"Marketplace",
+      "quantity": 2458, 
+      "date": "12.Jan.2021",
+      "progress": 75.5  
+    },
+    {
+      "name":"Venus DB PRO",
+      "quantity": 1485, 
+      "date": "21.Feb.2021",
+      "progress": 35.4  
+    },
+    {
+      "name":"Venus DS",
+      "quantity": 1024, 
+      "date": "13.Mar.2021",
+      "progress": 25  
+    },
+    {
+      "name":"Venus 3D Asset",
+      "quantity": 858, 
+      "date": "24.Jan.2021",
+      "progress": 100  
+    }
+  ]
+  
   return (
     <> 
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -80,7 +130,10 @@ export default function Marketplace() {
       <ModalHeader>Abstract Colors</ModalHeader>
       <ModalCloseButton />
       <ModalBody>
-        Lorem
+        <ColumnsTable 
+        columnsData={columnsDataColumns}
+        tableData={tableDataColumns}
+        />
       </ModalBody>
 
       <ModalFooter>
