@@ -36,7 +36,7 @@ export default function Projects(props) {
         image={Project1}
         ranking='1QS8Z'
         link='#'
-        title='Technology behind the Blockchain'
+        title='CLONE'
       />
       <Project
         boxShadow={cardShadow}
@@ -44,14 +44,14 @@ export default function Projects(props) {
         image={Project2}
         ranking='2QSDD'
         link='#'
-        title='Greatest way to a good Economy'
+        title='AZUKI'
       />
       <Project
         boxShadow={cardShadow}
         image={Project3}
         ranking='3QSDK5'
         link='#'
-        title='Most essential tips for Burnout'
+        title='CLONE'
       />
     </Card>
   );

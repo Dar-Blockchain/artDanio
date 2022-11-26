@@ -1,6 +1,7 @@
 // Chakra imports
 import {
   Box,
+  Button,
   Flex,
   Icon,
   Image,
@@ -39,9 +40,9 @@ export default function Project(props) {
             fontSize='sm'
             me='4px'>
             DOODLE #{ranking} •{" "}
-            <Link fontWeight='500' color={brandColor} href={link} fontSize='sm'>
-              See NFT details
-            </Link>
+            <Button fontWeight='500' color={brandColor} href={link} fontSize='sm'>
+              Deposit for loan
+            </Button>
           </Text>
         </Box>
       </Flex>

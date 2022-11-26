@@ -28,6 +28,13 @@ const routes = [
     component: MainDashboard,
   },
   {
+    name: "Profile",
+    layout: "/admin",
+    path: "/profile",
+    icon: <Icon as={MdPerson} width='20px' height='20px' color='inherit' />,
+    component: Profile,
+  },
+  {
     name: "Invest",
     layout: "/admin",
     path: "/nft-marketplace",
@@ -49,13 +56,7 @@ const routes = [
     path: "/data-tables",
     component: DataTables,
   },
-  {
-    name: "Profile",
-    layout: "/admin",
-    path: "/profile",
-    icon: <Icon as={MdPerson} width='20px' height='20px' color='inherit' />,
-    component: Profile,
-  },
+
 
 ];
 

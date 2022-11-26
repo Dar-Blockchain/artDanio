@@ -59,7 +59,7 @@ export default function Settings() {
           columnsData={columnsDataComplex}
           tableData={tableDataComplex}
         />
-      </SimpleGrid>
+      </SimpleGrid> 
     </Box>
   );
 }
