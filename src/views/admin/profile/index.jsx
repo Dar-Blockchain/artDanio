@@ -125,17 +125,21 @@ export default function Overview() {
               link='#'
               title='CLONE'
             />
-            <Project
-              action={() => {onOpen()
-                setTimeout(setModalState(2), 3000);
-              }}
-              boxShadow={cardShadow}
-              mb='20px'
-              image={Project2}
-              ranking='2QSDD'
-              link='#'
-              title='AZUKI'
-            />
+            { modalState === 1 & (
+                  <Project
+                  action={() => {onOpen()
+                    setTimeout(setModalState(2), 3000);
+                  }}
+                  boxShadow={cardShadow}
+                  mb='20px'
+                  image={Project2}
+                  ranking='2QSDD'
+                  link='#'
+                  title='AZUKI'
+                />
+            )
+            }
+
             <Project
             action={() => {onOpen()
               setTimeout(setModalState(2), 3000);
