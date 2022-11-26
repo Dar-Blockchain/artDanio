@@ -168,13 +168,7 @@ export default function UserReports() {
         <TotalSpent />
         <WeeklyRevenue />
       </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
-        <CheckTable columnsData={columnsDataCheck} tableData={tableDataCheck} />
-        <ColumnsTable
-          columnsData={columnsDataColumns}
-          tableData={tableDataColumns}
-        />      
-        </SimpleGrid>
+
     </Box>
   );
 }

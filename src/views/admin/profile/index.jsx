@@ -48,11 +48,11 @@ import Upload from "views/admin/profile/components/Upload";
 // Assets
 import banner from "assets/img/auth/banner.png";
 import avatar from "assets/img/avatars/avatar4.png";
-import React from "react";
+import React, { useState } from "react";
 import Project from "./components/Project";
 
 export default function Overview() {
-  
+  const [modalState, setModalState] = useState(1)
   const textColorPrimary = useColorModeValue("secondaryGray.900", "white");
   const textColorSecondary = "gray.400";
   const cardShadow = useColorModeValue(
@@ -60,7 +60,6 @@ export default function Overview() {
     "unset"
   );
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <>
 
@@ -71,16 +70,30 @@ export default function Overview() {
           <ModalCloseButton />
           <ModalBody mx='auto'>
           <Flex direction='column' justifyContent={'center'} alignItems='center' mx="auto">
+            {modalState === 1 ? (
+              <>
+                <Spinner />
+                <Text>Please wait</Text>
+              </>
+            ):(
+              <>
+              <Text>the floor price is<Text color='blue.600' fontSize='2xl'>
+              $450
+            </Text></Text>
+            <Text>you can get <Text color='blue.600' fontSize='2xl'>
+              $250
+            </Text></Text>
           
-            <Spinner />
-            <Text>Please wait</Text>
+              </>
+            )}
+            
           
             </Flex>  
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Close
+              Accept
             </Button>
             <Button variant='ghost'>Cancel</Button>
           </ModalFooter>
@@ -102,7 +115,9 @@ export default function Overview() {
               Here you can find more details about your collaterals.
             </Text>
             <Project
-              action={() => {onOpen()}}
+              action={() => {onOpen()
+                setInterval(() => {setModalState(2)}, 399999999999999990000);
+              }}
               boxShadow={cardShadow}
               mb='20px'
               image={Project1}
@@ -111,7 +126,9 @@ export default function Overview() {
               title='CLONE'
             />
             <Project
-              action={() => {onOpen()}}
+              action={() => {onOpen()
+                setTimeout(setModalState(2), 3000);
+              }}
               boxShadow={cardShadow}
               mb='20px'
               image={Project2}
@@ -120,8 +137,10 @@ export default function Overview() {
               title='AZUKI'
             />
             <Project
-              action={() => {onOpen()}}
-              boxShadow={cardShadow}
+            action={() => {onOpen()
+              setTimeout(setModalState(2), 3000);
+            }}
+            boxShadow={cardShadow}
               image={Project3}
               ranking='3QSDK5'
               link='#'
