@@ -20,7 +20,7 @@
 
 */
 
-import React from "react";
+import React, { useState } from "react";
 
 // Chakra imports
 import {
@@ -69,7 +69,7 @@ import { tableColumnsTopCreators } from "views/admin/marketplace/variables/table
 export default function Marketplace() {
   // Chakra Color Mode
   const { isOpen, onOpen, onClose } = useDisclosure()
-
+  const [currentNft, setCurrentNft] = useState({});
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const textColorBrand = useColorModeValue("brand.500", "white");
   return (
@@ -77,7 +77,7 @@ export default function Marketplace() {
     <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay />
     <ModalContent>
-      <ModalHeader>Modal Title</ModalHeader>
+      <ModalHeader>Abstract Colors</ModalHeader>
       <ModalCloseButton />
       <ModalBody>
         Lorem
@@ -145,56 +145,27 @@ export default function Marketplace() {
             </Flex>
             <SimpleGrid columns={{ base: 1, md: 3 }} gap='20px'>
               <NFT
-                action={() => {onOpen()}}
+                action={() => { 
+                  onOpen()
+                }}
                 name='Abstract Colors'
                 author='By Esthera Jackson'
-                bidders={[
-                  Avatar1,
-                  Avatar2,
-                  Avatar3,
-                  Avatar4,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                ]}
                 image={Nft1}
                 currentbid='0.91 ETH'
-                download='#'
               />
               <NFT
                 name='ETH AI Brain'
                 author='CRYPTOPUNKS'
-                bidders={[
-                  Avatar1,
-                  Avatar2,
-                  Avatar3,
-                  Avatar4,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                ]}
+
                 image={Nft2}
                 currentbid='0.91 ETH'
-                download='#'
+
               />
               <NFT
                 name='Mesh Gradients '
                 author='By BoredApeYachtClub'
-                bidders={[
-                  Avatar1,
-                  Avatar2,
-                  Avatar3,
-                  Avatar4,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                ]}
                 image={Nft3}
                 currentbid='0.91 ETH'
-                download='#'
               />
             </SimpleGrid>
             <Text
@@ -213,16 +184,7 @@ export default function Marketplace() {
               <NFT
                 name='Swipe Circles'
                 author='By Peter Will'
-                bidders={[
-                  Avatar1,
-                  Avatar2,
-                  Avatar3,
-                  Avatar4,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                ]}
+
                 image={Nft4}
                 currentbid='0.91 ETH'
                 download='#'
@@ -230,16 +192,7 @@ export default function Marketplace() {
               <NFT
                 name='Colorful Heaven'
                 author='By Mark Benjamin'
-                bidders={[
-                  Avatar1,
-                  Avatar2,
-                  Avatar3,
-                  Avatar4,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                ]}
+
                 image={Nft5}
                 currentbid='0.91 ETH'
                 download='#'
@@ -247,16 +200,7 @@ export default function Marketplace() {
               <NFT
                 name='3D Cubes Art'
                 author='By Manny Gates'
-                bidders={[
-                  Avatar1,
-                  Avatar2,
-                  Avatar3,
-                  Avatar4,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                  Avatar1,
-                ]}
+
                 image={Nft6}
                 currentbid='0.91 ETH'
                 download='#'

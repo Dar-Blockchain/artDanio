@@ -1,5 +1,5 @@
 // Chakra imports
-import { SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
+import { Heading, SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
 // Custom components
 import Card from "components/card/Card.js";
 import React from "react";
@@ -23,45 +23,14 @@ export default function GeneralInformation(props) {
         fontSize='2xl'
         mt='10px'
         mb='4px'>
-        General Information
+        Your borrows
       </Text>
-      <Text color={textColorSecondary} fontSize='md' me='26px' mb='40px'>
-        As we live, our hearts turn colder. Cause pain is what we go through as
-        we become older. We get insulted by others, lose trust for those others.
-        We get back stabbed by friends. It becomes harder for us to give others
-        a hand. We get our heart broken by people we love, even that we give
-        them all...
-      </Text>
-      <SimpleGrid columns='2' gap='20px'>
+
+      <SimpleGrid>
         <Information
           boxShadow={cardShadow}
           title='Education'
           value='Stanford University'
-        />
-        <Information
-          boxShadow={cardShadow}
-          title='Languages'
-          value='English, Spanish, Italian'
-        />
-        <Information
-          boxShadow={cardShadow}
-          title='Department'
-          value='Product Design'
-        />
-        <Information
-          boxShadow={cardShadow}
-          title='Work History'
-          value='Google, Facebook'
-        />
-        <Information
-          boxShadow={cardShadow}
-          title='Organization'
-          value='Simmmple Web LLC'
-        />
-        <Information
-          boxShadow={cardShadow}
-          title='Birthday'
-          value='20 July 1986'
         />
       </SimpleGrid>
     </Card>

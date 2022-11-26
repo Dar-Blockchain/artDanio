@@ -50,15 +50,7 @@ export default function Overview() {
           lg: "1fr",
         }}
         gap={{ base: "20px", xl: "20px" }}>
-        <Upload
-          gridArea={{
-            base: "3 / 1 / 4 / 2",
-            lg: "1 / 3 / 2 / 4",
-          }}
-          minH={{ base: "auto", lg: "420px", "2xl": "365px" }}
-          pe='20px'
-          pb={{ base: "100px", lg: "20px" }}
-        />
+
       </Grid>
       <Grid
         mb='20px'
