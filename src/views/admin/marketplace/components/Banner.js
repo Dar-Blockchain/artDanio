@@ -30,7 +30,7 @@ export default function Banner() {
         }}
         fontWeight='700'
         lineHeight={{ base: "32px", md: "42px" }}>
-        Discover, collect, and sell extraordinary NFTs
+        Invest in Art’Danio’s assets <br/> generate income in return
       </Text>
       <Text
         fontSize='md'
@@ -46,8 +46,9 @@ export default function Banner() {
         fontWeight='500'
         mb='40px'
         lineHeight='28px'>
-        Enter in this creative world. Discover now the latest NFTs or start
-        creating your own!
+        ART'DANIO is a DEFI protocol that allows NFTs to be used as collateral to borrow crypto assets.<br/>
+        Account holders can also earn interest by purchasing NFT loans and supplying the base assets.
+
       </Text>
       <Flex align='center'>
         <Button

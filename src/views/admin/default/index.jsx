@@ -21,6 +21,13 @@
 */
 
 // Chakra imports
+
+import {
+  columnsDataColumns,
+} from "./variables/columnsData";
+
+import tableDataColumns from "views/admin/dataTables/variables/tableDataColumns.json";
+
 import {
   Avatar,
   Box,
@@ -38,7 +45,7 @@ import MiniCalendar from "components/calendar/MiniCalendar";
 import MiniStatistics from "components/card/MiniStatistics";
 import IconBox from "components/icons/IconBox";
 import { EthereumLogoOutline } from "components/icons/Icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   MdAddTask,
   MdAttachMoney,
@@ -58,9 +65,30 @@ import {
 } from "views/admin/default/variables/columnsData";
 import tableDataCheck from "views/admin/default/variables/tableDataCheck.json";
 import tableDataComplex from "views/admin/default/variables/tableDataComplex.json";
+import ColumnsTable from "./components/ComplexTable";
 
 export default function UserReports() {
   // Chakra Color Mode
+  const [wallet, setWallet] = useState({address: localStorage.getItem('walletAdress'), balance: localStorage.getItem('walletBalance')})
+  useEffect(() => {
+    if (window.ethereum || !(localStorage.getItem('walletAdress'))){
+      window.ethereum.request({method:'eth_requestAccounts'}).then(res=>{
+              // Return the address of the wallet
+              localStorage.setItem("walletAdress",res) 
+      })
+      window.ethereum.request({
+        method:'eth_getBalance', 
+        params: [localStorage.getItem('walletAdress') , 'latest']
+      }).then(balance => {
+          localStorage.setItem('walletBalance', balance)
+    })    
+    }
+      else if (!window.ethereum) 
+      {
+      alert("install metamask extension!!")
+    }
+  })
+  
   const brandColor = useColorModeValue("brand.500", "white");
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
   return (
@@ -117,7 +145,7 @@ export default function UserReports() {
             </Flex>
           }
           name='Your balance'
-          value='4.02 eth'
+          value={wallet.balance ? (wallet.balance):('-')}
         />
 
         <MiniStatistics
@@ -142,8 +170,11 @@ export default function UserReports() {
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
         <CheckTable columnsData={columnsDataCheck} tableData={tableDataCheck} />
-        <CheckTable columnsData={columnsDataCheck} tableData={tableDataCheck} />
-      </SimpleGrid>
+        <ColumnsTable
+          columnsData={columnsDataColumns}
+          tableData={tableDataColumns}
+        />      
+        </SimpleGrid>
     </Box>
   );
 }

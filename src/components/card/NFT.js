@@ -18,7 +18,7 @@ import React, { useState } from "react";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
 
 export default function NFT(props) {
-  const { image, name, author, bidders, download, currentbid } = props;
+  const { image, name, author, bidders, download, currentbid, action } = props;
   const [like, setLike] = useState(false);
   const textColor = useColorModeValue("navy.700", "white");
   const textColorBid = useColorModeValue("brand.500", "white");
@@ -122,18 +122,15 @@ export default function NFT(props) {
             }}
             mt='25px'>
             <Text fontWeight='700' fontSize='sm' color={textColorBid}>
-              Current Bid: {currentbid}
+              Price: {currentbid}
             </Text>
-            <Link
-              href={download}
-              mt={{
-                base: "0px",
-                md: "10px",
-                lg: "0px",
-                xl: "10px",
-                "2xl": "0px",
-              }}>
+            <Text fontWeight='700' fontSize='sm' color={textColorBid}>
+              Yield: {currentbid}
+            </Text>
+            </Flex>
+
               <Button
+                onClick={() => {action()}}
                 variant='darkBrand'
                 color='white'
                 fontSize='sm'
@@ -141,10 +138,9 @@ export default function NFT(props) {
                 borderRadius='70px'
                 px='24px'
                 py='5px'>
-                Place Bid
+                Invest
               </Button>
-            </Link>
-          </Flex>
+          
         </Flex>
       </Flex>
     </Card>

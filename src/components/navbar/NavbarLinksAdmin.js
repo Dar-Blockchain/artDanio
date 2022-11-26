@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 // Custom Components
 import { ItemContent } from "components/menu/ItemContent";
-import { SearchBar } from "components/navbar/searchBar/SearchBar";
 import { SidebarResponsive } from "components/sidebar/Sidebar";
 import PropTypes from "prop-types";
 import React from "react";
@@ -52,11 +51,7 @@ export default function HeaderLinks(props) {
       p='10px'
       borderRadius='30px'
       boxShadow={shadow}>
-      <SearchBar
-        mb={secondary ? { base: "10px", md: "unset" } : "unset"}
-        me='10px'
-        borderRadius='30px'
-      />
+
       <Flex
         bg={ethBg}
         display={secondary ? "flex" : "none"}
@@ -211,7 +206,7 @@ export default function HeaderLinks(props) {
           <Avatar
             _hover={{ cursor: "pointer" }}
             color='white'
-            name='Adela Parkson'
+            name={localStorage.getItem('walletAdress') !== null ? (localStorage.getItem('walletAdress')):("Connect wallet")}
             bg='#11047A'
             size='sm'
             w='40px'
@@ -236,7 +231,7 @@ export default function HeaderLinks(props) {
               fontSize='sm'
               fontWeight='700'
               color={textColor}>
-              👋&nbsp; Hey, Adela
+              {localStorage.getItem('walletAdress') ?  (localStorage.getItem('walletAdress').slice(0,8) + "..."):('connect')} 
             </Text>
           </Flex>
           <Flex flexDirection='column' p='10px'>

@@ -32,7 +32,18 @@ import {
   Text,
   useColorModeValue,
   SimpleGrid,
+  useDisclosure,
 } from "@chakra-ui/react";
+
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
 
 // Custom components
 import Banner from "views/admin/marketplace/components/Banner";
@@ -57,9 +68,29 @@ import { tableColumnsTopCreators } from "views/admin/marketplace/variables/table
 
 export default function Marketplace() {
   // Chakra Color Mode
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const textColorBrand = useColorModeValue("brand.500", "white");
   return (
+    <> 
+    <Modal isOpen={isOpen} onClose={onClose}>
+    <ModalOverlay />
+    <ModalContent>
+      <ModalHeader>Modal Title</ModalHeader>
+      <ModalCloseButton />
+      <ModalBody>
+        Lorem
+      </ModalBody>
+
+      <ModalFooter>
+        <Button colorScheme='blue' mr={3} onClick={onClose}>
+          Close
+        </Button>
+        <Button variant='ghost'>Secondary Action</Button>
+      </ModalFooter>
+    </ModalContent>
+  </Modal>
     <Box pt={{ base: "180px", md: "80px", xl: "80px" }}>
       {/* Main Fields */}
       <Grid
@@ -79,7 +110,7 @@ export default function Marketplace() {
               direction={{ base: "column", md: "row" }}
               align={{ base: "start", md: "center" }}>
               <Text color={textColor} fontSize='2xl' ms='24px' fontWeight='700'>
-                Trending NFTs
+                Invest in loan Yield
               </Text>
               <Flex
                 align='center'
@@ -114,6 +145,7 @@ export default function Marketplace() {
             </Flex>
             <SimpleGrid columns={{ base: 1, md: 3 }} gap='20px'>
               <NFT
+                action={() => {onOpen()}}
                 name='Abstract Colors'
                 author='By Esthera Jackson'
                 bidders={[
@@ -132,7 +164,7 @@ export default function Marketplace() {
               />
               <NFT
                 name='ETH AI Brain'
-                author='By Nick Wilson'
+                author='CRYPTOPUNKS'
                 bidders={[
                   Avatar1,
                   Avatar2,
@@ -149,7 +181,7 @@ export default function Marketplace() {
               />
               <NFT
                 name='Mesh Gradients '
-                author='By Will Smith'
+                author='By BoredApeYachtClub'
                 bidders={[
                   Avatar1,
                   Avatar2,
@@ -301,5 +333,6 @@ export default function Marketplace() {
       </Grid>
       {/* Delete Product */}
     </Box>
+    </>
   );
 }
