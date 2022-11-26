@@ -69,8 +69,8 @@ export default function Overview() {
         <ModalContent>
           <ModalHeader>Evaluating NFT Value</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-          <Flex direction='column'>
+          <ModalBody mx='auto'>
+          <Flex direction='column' justifyContent={'center'} alignItems='center' mx="auto">
           
             <Spinner />
             <Text>Please wait</Text>
@@ -82,7 +82,7 @@ export default function Overview() {
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant='ghost'>Secondary Action</Button>
+            <Button variant='ghost'>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
