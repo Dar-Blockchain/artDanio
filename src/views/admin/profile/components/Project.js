@@ -16,7 +16,7 @@ import React from "react";
 import { MdEdit } from "react-icons/md";
 
 export default function Project(props) {
-  const { title, ranking, link, image, ...rest } = props;
+  const { title, ranking, link, image, action, ...rest } = props;
   // Chakra Color Mode
   const textColorPrimary = useColorModeValue("secondaryGray.900", "white");
   const textColorSecondary = "gray.400";
@@ -40,7 +40,7 @@ export default function Project(props) {
             fontSize='sm'
             me='4px'>
             DOODLE #{ranking} •{" "}
-            <Button fontWeight='500' color={brandColor} href={link} fontSize='sm'>
+            <Button fontWeight='500' onClick={() => {action()}} color={brandColor} href={link} fontSize='sm'>
               Deposit for loan
             </Button>
           </Text>

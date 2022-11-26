@@ -21,8 +21,22 @@
 */
 
 // Chakra imports
-import { Box, Flex, Grid } from "@chakra-ui/react";
-
+import { Box, Button, Flex, Grid, useColorModeValue, useDisclosure } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
+import { Spinner } from '@chakra-ui/react'
+import Project1 from "assets/img/profile/Project1.png";
+import Project2 from "assets/img/profile/Project2.png";
+import Project3 from "assets/img/profile/Project3.png";
+import Card from "components/card/Card.js";
+import { Text } from "@chakra-ui/react";
 // Custom components
 import Banner from "views/admin/profile/components/Banner";
 import General from "views/admin/profile/components/General";
@@ -35,22 +49,85 @@ import Upload from "views/admin/profile/components/Upload";
 import banner from "assets/img/auth/banner.png";
 import avatar from "assets/img/avatars/avatar4.png";
 import React from "react";
+import Project from "./components/Project";
 
 export default function Overview() {
+  
+  const textColorPrimary = useColorModeValue("secondaryGray.900", "white");
+  const textColorSecondary = "gray.400";
+  const cardShadow = useColorModeValue(
+    "0px 18px 40px rgba(112, 144, 176, 0.12)",
+    "unset"
+  );
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
+    <>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Evaluating NFT Value</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          <Flex direction='column'>
+          
+            <Spinner />
+            <Text>Please wait</Text>
+          
+            </Flex>  
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant='ghost'>Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
     <Flex justifyContent={'space-between'} pt={{ base: "130px", md: "80px", xl: "80px" }}>
       {/* Main Fields */}
-        <Projects
-          banner={banner}
-          avatar={avatar}
-          name='Adela Parkson'
-          job='Product Designer'
-          posts='17'
-          followers='9.7k'
-          following='274'
-          mr='5'
-          w="50%"
-        />
+      <Card mb={{ base: "0px", "2xl": "20px" }}>
+            <Text
+              color={textColorPrimary}
+              fontWeight='bold'
+              fontSize='2xl'
+              mt='10px'
+              mb='4px'>
+              All collaterals.
+            </Text>
+            <Text color={textColorSecondary} fontSize='md' me='26px' mb='40px'>
+              Here you can find more details about your collaterals.
+            </Text>
+            <Project
+              action={() => {onOpen()}}
+              boxShadow={cardShadow}
+              mb='20px'
+              image={Project1}
+              ranking='1QS8Z'
+              link='#'
+              title='CLONE'
+            />
+            <Project
+              action={() => {onOpen()}}
+              boxShadow={cardShadow}
+              mb='20px'
+              image={Project2}
+              ranking='2QSDD'
+              link='#'
+              title='AZUKI'
+            />
+            <Project
+              action={() => {onOpen()}}
+              boxShadow={cardShadow}
+              image={Project3}
+              ranking='3QSDK5'
+              link='#'
+              title='CLONE'
+            />
+          </Card>
         <General
           minH='365px'
           pe='20px'
@@ -58,5 +135,6 @@ export default function Overview() {
           ml='5'
         />
     </Flex>
+    </>
   );
 }
