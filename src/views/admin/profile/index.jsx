@@ -60,6 +60,7 @@ export default function Overview() {
     "unset"
   );
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
 
@@ -92,10 +93,13 @@ export default function Overview() {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
+            <Button colorScheme='blue' mr={3} onClick={() => {
+              setModalState(3)
+              onClose()
+            }} >
               Accept
             </Button>
-            <Button variant='ghost'>Cancel</Button>
+            <Button variant='ghost' onClick={onClose} >Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -114,22 +118,25 @@ export default function Overview() {
             <Text color={textColorSecondary} fontSize='md' me='26px' mb='40px'>
               Here you can find more details about your collaterals.
             </Text>
+            { modalState === 3 ? (""):(
             <Project
-              action={() => {onOpen()
-                setInterval(() => {setModalState(2)}, 399999999999999990000);
-              }}
+                action={() => {onOpen()
+                  let x = setTimeout(() => {setModalState(2)}, 39899999999999000);
+                  return () => {clearTimeout(x)}
+                  }}
               boxShadow={cardShadow}
               mb='20px'
               image={Project1}
               ranking='1QS8Z'
               link='#'
               title='CLONE'
-            />
-            { modalState === 1 & (
+            />)
+            }
                   <Project
                   action={() => {onOpen()
-                    setTimeout(setModalState(2), 3000);
-                  }}
+                    let x = setTimeout(() => {setModalState(2)}, 39899999999999000);
+                    return () => {clearTimeout(x)}
+                    }}
                   boxShadow={cardShadow}
                   mb='20px'
                   image={Project2}
@@ -137,13 +144,14 @@ export default function Overview() {
                   link='#'
                   title='AZUKI'
                 />
-            )
-            }
+            
+            
 
             <Project
             action={() => {onOpen()
-              setTimeout(setModalState(2), 3000);
-            }}
+              let x = setTimeout(() => {setModalState(2)}, 39899999999999000);
+              return () => {clearTimeout(x)}
+              }}
             boxShadow={cardShadow}
               image={Project3}
               ranking='3QSDK5'
